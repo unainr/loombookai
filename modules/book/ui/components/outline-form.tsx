@@ -3,10 +3,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import {
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -17,14 +17,15 @@ import { bookOutlineSchema } from "../../schema";
 import {
 	Select,
 	SelectContent,
-	SelectGroup,
 	SelectItem,
-	SelectLabel,
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
 import { writingStyles } from "@/constants";
+import { createOutline } from "../../server/create-outline";
+import { useState } from "react";
 const OutlineForm = () => {
+	const [loading, setLoading] = useState(false);
 	const form = useForm<z.infer<typeof bookOutlineSchema>>({
 		resolver: zodResolver(bookOutlineSchema),
 		defaultValues: {
@@ -35,8 +36,16 @@ const OutlineForm = () => {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof bookOutlineSchema>) {
-		console.log(values);
+	async function onSubmit(values: z.infer<typeof bookOutlineSchema>) {
+		try {
+			setLoading(true);
+			const data = await createOutline(values);
+			if(data) form.reset()
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setLoading(false);
+		}
 	}
 	return (
 		<Form {...form}>
@@ -110,7 +119,15 @@ const OutlineForm = () => {
 						</FormItem>
 					)}
 				/>
-				<Button type="submit">Submit</Button>
+				<Button disabled={loading} type="submit">
+					{loading ? (
+						<>
+							<Spinner /> Processing
+						</>
+					) : (
+						"Submit"
+					)}
+				</Button>
 			</form>
 		</Form>
 	);
