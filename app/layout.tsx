@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Suspense } from "react";
 import { dark } from "@clerk/themes";
@@ -30,19 +29,12 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<Suspense fallback={<div>Loading authentication...</div>}>
-					<ClerkProvider
-						appearance={{
-							baseTheme: dark,
-						}}>
-						<ThemeProvider
-							attribute="class"
-							defaultTheme="dark"
-							disableTransitionOnChange>
-							{children}
-						</ThemeProvider>
-					</ClerkProvider>
-				</Suspense>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="dark"
+					disableTransitionOnChange>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);

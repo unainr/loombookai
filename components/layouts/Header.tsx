@@ -5,11 +5,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { AnimatedThemeToggler } from "../animated-toggle";
+import UserDropDown from "./user-drop-down";
 
 export default function MainHeader() {
 	const [isScrolled, setIsScrolled] = React.useState(false);
@@ -28,7 +28,7 @@ export default function MainHeader() {
 			className={`fixed top-0 z-50 w-full transition-all duration-200 ${
 				isScrolled ? "bg-background/60 backdrop-blur-md" : ""
 			}`}>
-			<div className="mx-auto max-w-screen-xl flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+			<div className="mx-auto  flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
 				<Logo />
 
 				<nav className="hidden  md:flex items-center gap-4 lg:gap-6">
@@ -82,17 +82,7 @@ export default function MainHeader() {
 
 				<div className="hidden md:flex items-center gap-2">
 					<AnimatedThemeToggler />
-
-					<SignedIn>
-						<UserButton />
-					</SignedIn>
-					<SignedOut>
-						<Button
-							asChild
-							className="rounded-lg bg-[#845fff] hover:bg-[#845fff]/90  text-white">
-							<Link href="/sign-in">Get Started</Link>
-						</Button>
-					</SignedOut>
+					<UserDropDown />
 				</div>
 
 				{/* Mobile Menu Trigger */}
@@ -143,16 +133,7 @@ export default function MainHeader() {
 								</Link>
 								<AnimatedThemeToggler />
 
-								<SignedIn>
-									<UserButton />
-								</SignedIn>
-								<SignedOut>
-									<Button
-										asChild
-										className="rounded-lg bg-[#845fff] hover:bg-[#845fff]/90  text-white">
-										<Link href="/sign-in">Get Started</Link>
-									</Button>
-								</SignedOut>
+								<UserDropDown />
 							</nav>
 						</SheetContent>
 					</Sheet>
