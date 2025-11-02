@@ -1,52 +1,56 @@
 export const writingStyles = [
-  { label: 'Informative', value: 'informative' },
-  { label: 'Storytelling', value: 'storytelling' },
-  { label: 'Casual', value: 'casual' },
-  { label: 'Professional', value: 'professional' },
-  { label: 'Humorous', value: 'humorous' },
-] 
+	{ label: "Informative", value: "informative" },
+	{ label: "Storytelling", value: "storytelling" },
+	{ label: "Casual", value: "casual" },
+	{ label: "Professional", value: "professional" },
+	{ label: "Humorous", value: "humorous" },
+];
 
-export const generateOutlinePrompt = ({
-  bookTitle,
-  topic,
-  chaptersCount,
+export const expandShortOutlineToFullBookPrompt = ({
+  outlineJSON,
   writingStyle,
 }: {
-  bookTitle: string;
-  topic: string;
-  chaptersCount: number;
+  outlineJSON: string;
   writingStyle: string;
 }) => `
-You are an expert author and editor. Generate a **book outline** strictly in **valid JSON** format based on the following details:
+You are a master book author. Expand the following book outline into a fully detailed book.
 
-Book Title: ${bookTitle}
-Main Topic: ${topic}
-Number of Chapters: ${chaptersCount}
-Writing Style: ${writingStyle}
+## Base Outline (DO NOT change chapter count or order)
+${outlineJSON}
 
-### Requirements:
-1. Respond **only with JSON**, without any markdown, code fences, or commentary.
-2. The JSON must be syntactically valid and follow this structure exactly:
+## Rules
+- Keep all chapter numbers & titles EXACTLY as given.
+- Do not invent new chapters.
+- Expand each chapter into deep, useful content.
+- Tone style: ${writingStyle}
+- Output ONLY valid JSON — no markdown, no commentary.
 
+## Content Requirements Per Chapter
+- 1 engaging chapter introduction (2–3 paragraphs)
+- 4–6 sections, each section includes:
+  - "sectionTitle": short meaningful title
+  - "ideas": 3–5 bullet key ideas
+  - "example": 1 practical example, story, case or takeaway
+
+## JSON Response Format
 {
   "bookTitle": string,
   "summary": string,
   "chapters": [
     {
-      "chapterNumber": number,
-      "chapterTitle": string,
-      "points": [string, string, string]
+      "number": number,
+      "title": string,
+      "chapterIntro": string,
+      "sections": [
+        {
+          "sectionTitle": string,
+          "ideas": [string, string, string],
+          "example": string
+        }
+      ]
     }
   ]
 }
 
-### Notes:
-- Generate exactly ${chaptersCount} chapters.
-- Each chapter must have a creative, relevant title.
-- Each "points" array must include 2–4 short bullet summaries.
-- Ensure the tone reflects the ${writingStyle} style.
-- Avoid markdown or extra text.
-
-Now, output the **final JSON only**.
+Return ONLY the JSON. Do NOT include anything else.
 `;
-
