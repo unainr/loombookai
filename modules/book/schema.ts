@@ -5,4 +5,6 @@ export const bookOutlineSchema = z.object({
   topic: z.string().min(3, "Topic is required"),
  chaptersCount: z.number().min(1, "Must have at least one chapter"),
   writingStyle: z.string().nonempty("Writing style is required"),
+coverImageUrl: z.instanceof(File).optional(),
+
 })
