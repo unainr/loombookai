@@ -6,10 +6,10 @@ import { bookOutline } from "@/drizzle/schema";
 import { db } from "@/drizzle/db";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { UpdateProps } from "@/types";
-import { imagekit } from "@/lib/image-kit";
 import { ImageUpload } from "./image-upload";
+import { updateTag } from "next/cache";
 
 interface Props {
 	bookTitle: string;
@@ -17,7 +17,7 @@ interface Props {
 	chaptersCount: number;
 	writingStyle: string;
 	review_outline?: object;
-	 coverImageUrl?: File;
+	coverImageUrl?: File;
 }
 
 // create outline for a book
@@ -27,7 +27,7 @@ export const createOutline = async ({
 	chaptersCount,
 	writingStyle,
 	review_outline,
-	coverImageUrl
+	coverImageUrl,
 }: Props) => {
 	try {
 		const session = await auth.api.getSession({
@@ -37,7 +37,7 @@ export const createOutline = async ({
 		if (!session) {
 			throw new Error("Not authenticated");
 		}
-		
+
 		const userId = session.user.id;
 		const prompt = `
 You are a professional book writer. Create a **complete flash book** with full content for each chapter.
@@ -94,8 +94,8 @@ Return only the JSON with complete chapter content.
 		});
 		let imageUrl: string | null = null;
 		if (coverImageUrl) {
-  imageUrl = await ImageUpload(coverImageUrl);
-}
+			imageUrl = await ImageUpload(coverImageUrl);
+		}
 		const [insertData] = await db
 			.insert(bookOutline)
 			.values({
@@ -108,7 +108,8 @@ Return only the JSON with complete chapter content.
 				coverImageUrl: imageUrl,
 			})
 			.returning();
-		return insertData;
+			updateTag('books-update')
+			return insertData;
 	} catch (error) {
 		console.error("Error inserting book outline:", error);
 		throw error;
@@ -134,10 +135,21 @@ export const getOutline = async (id: string) => {
 // get all books
 export const getAllBooks = async () => {
 	try {
-		const data = await db.select().from(bookOutline);
-		return data;
+		const bookAll = await db
+			.select({
+				id: bookOutline.id,
+				bookTitle: bookOutline.bookTitle,
+				topic: bookOutline.topic,
+				coverImageUrl: bookOutline.coverImageUrl,
+				chaptersCount:bookOutline.chaptersCount
+			})
+			.from(bookOutline)
+			.orderBy(desc(bookOutline.createdAt));
+
+		return { success: true, data: bookAll };
 	} catch (error) {
-		return { success: false, error };
+		console.error("Get all books error:", error);
+		return { success: false, error: String(error) };
 	}
 };
 

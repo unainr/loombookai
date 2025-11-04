@@ -126,7 +126,7 @@ export default function MarkDownEditor({ data }: Props) {
               <div className="border border-border/50 rounded-lg  bg-background shadow-sm hover:shadow-md hover:border-border transition-all duration-200" data-color-mode="dark">
                 <MDEditor
                   className="min-h-screen"
-                  value={BookData.chapters.find((c) => c.number === chapter.number)?.content}
+                  value={BookData.chapters.find((c) => c.number === chapter.number)?.content ?? ""}
                   onChange={(value) => handleChapterChange(chapter.number, value)}
                 />
               </div>
