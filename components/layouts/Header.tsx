@@ -37,26 +37,26 @@ export default function MainHeader() {
 						className={cn(
 							"text-sm font-medium transition-colors ",
 							isActive("/") &&
-								"text-[#a288f9] hover:text-[#845fff] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
+								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
 						)}>
 						Home
 					</Link>
 
 					<Link
-						href="/create-companion"
+						href="/create-book"
 						className={cn(
 							"text-sm font-medium transition-colors ",
-							isActive("/create-companion") &&
-								"text-[#a288f9] hover:text-[#845fff] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
+							isActive("/create-book") &&
+								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
 						)}>
-						Create Companion
+						Create Book
 					</Link>
 					<Link
 						href="/learning-ai"
 						className={cn(
 							"text-sm font-medium transition-colors ",
 							isActive("/learning-ai") &&
-								"text-[#a288f9] hover:text-[#845fff] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
+								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
 						)}>
 						Learning
 					</Link>
@@ -65,7 +65,7 @@ export default function MainHeader() {
 						className={cn(
 							"text-sm font-medium transition-colors ",
 							isActive("/journey") &&
-								"text-[#a288f9] hover:text-[#845fff] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
+								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
 						)}>
 						My Journey
 					</Link>
@@ -74,7 +74,7 @@ export default function MainHeader() {
 						className={cn(
 							"text-sm font-medium transition-colors ",
 							isActive("/pricing") &&
-								"text-[#a288f9] hover:text-[#845fff] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
+								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
 						)}>
 						Pricing
 					</Link>
@@ -100,7 +100,7 @@ export default function MainHeader() {
 									className={cn(
 										"text-sm font-medium transition-colors ",
 										isActive("/") &&
-											"text-[#a288f9] hover:text-[#845fff] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
+											"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
 									)}>
 									Home
 								</Link>
@@ -109,7 +109,7 @@ export default function MainHeader() {
 									className={cn(
 										"text-sm font-medium transition-colors ",
 										isActive("/learning-ai") &&
-											"text-[#a288f9] hover:text-[#845fff] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
+											"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
 									)}>
 									Learning
 								</Link>
@@ -118,7 +118,7 @@ export default function MainHeader() {
 									className={cn(
 										"text-sm font-medium transition-colors ",
 										isActive("/journey") &&
-											"text-[#a288f9] hover:text-[#845fff] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
+											"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
 									)}>
 									My Journey
 								</Link>
@@ -127,7 +127,7 @@ export default function MainHeader() {
 									className={cn(
 										"text-sm font-medium transition-colors ",
 										isActive("/pricing") &&
-											"text-[#a288f9] hover:text-[#845fff] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
+											"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
 									)}>
 									Pricing
 								</Link>
