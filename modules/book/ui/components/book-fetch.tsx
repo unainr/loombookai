@@ -9,8 +9,8 @@ export interface BookProps {
 
 const BookFetch = async () => {
 	"use cache";
-	cacheLife('hours');
-	cacheTag('books-update');
+	cacheLife("hours");
+	cacheTag("books-update");
 	const result = await getAllBooks();
 
 	if (!result.success) {
@@ -20,17 +20,30 @@ const BookFetch = async () => {
 
 	const books = result.data;
 	return (
-		<div>
-			<h2 className="text-xl font-semibold mb-3">Books List</h2>
+		<>
+			<div className="text-center  mx-auto px-4 mt-6 mb-6 ">
+  <h2 className="text-3xl md:text-6xl font-bold leading-snug">
+   Featured {" "}
+   <span className="text-[#ffbc5f]">
+  Books
+</span>
 
-			<div className="flex gap-10 space-y-2">
-				{books?.map((book: BookProps) => (
-					<Link key={book.id} href={`/editor/${book.id}`}>
-						<Book coverImageUrl={book.coverImageUrl} />
-					</Link>
-				))}
-			</div>
-		</div>
+  </h2>
+
+  <p className="text-lg md:text-xl text-muted-foreground mt-3 mb-15">
+    Hand-crafted selections from your personal library
+  </p>
+</div>
+
+<div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 place-items-center px-4">
+  {books?.map((book: BookProps) => (
+    <Link key={book.id} href={`/editor/${book.id}`}>
+      <Book coverImageUrl={book.coverImageUrl} />
+    </Link>
+  ))}
+</div>
+
+		</>
 	);
 };
 
