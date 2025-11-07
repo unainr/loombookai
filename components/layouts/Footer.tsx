@@ -1,56 +1,148 @@
-import Link from "next/link";
+"use client";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Instagram,
+  Twitter,
+  Dribbble,
+  Globe,
+} from "lucide-react";
+import { FooterBackgroundGradient, TextHoverEffect } from "./hover-footer";
 import Logo from "./Logo";
 
-const Footer = () => {
+function Footer() {
+  // Footer link data
+  const footerLinks = [
+    {
+      title: "About Us",
+      links: [
+        { label: "Company History", href: "#" },
+        { label: "Meet the Team", href: "#" },
+        { label: "Employee Handbook", href: "#" },
+        { label: "Careers", href: "#" },
+      ],
+    },
+    {
+      title: "Helpful Links",
+      links: [
+        { label: "FAQs", href: "#" },
+        { label: "Support", href: "#" },
+        {
+          label: "Live Chat",
+          href: "#",
+          pulse: true,
+        },
+      ],
+    },
+  ];
+
+  // Contact info data
+  const contactInfo = [
+    {
+      icon: <Mail size={18} className="text-[#3ca2fa]" />,
+      text: "hello@nurui.com",
+      href: "mailto:hello@nurui.com",
+    },
+    {
+      icon: <Phone size={18} className="text-[#3ca2fa]" />,
+      text: "+91 86373 73116",
+      href: "tel:+918637373116",
+    },
+    {
+      icon: <MapPin size={18} className="text-[#3ca2fa]" />,
+      text: "Sylhet, Bangladesh",
+    },
+  ];
+
+  // Social media icons
+  const socialLinks = [
+    { icon: <Facebook size={20} />, label: "Facebook", href: "#" },
+    { icon: <Instagram size={20} />, label: "Instagram", href: "#" },
+    { icon: <Twitter size={20} />, label: "Twitter", href: "#" },
+    { icon: <Dribbble size={20} />, label: "Dribbble", href: "#" },
+    { icon: <Globe size={20} />, label: "Globe", href: "#" },
+  ];
+
   return (
-    <footer className="border-t border-border bg-muted/30">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <Logo/>
-            <p className="text-muted-foreground">
-              Creating meaningful AI companions for everyone.
+    <footer className="bg-[#0F0F11]/10 relative h-fit rounded-3xl overflow-hidden m-8">
+      <div className="max-w-7xl mx-auto p-14 z-40 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 lg:gap-16 pb-12">
+          {/* Brand section */}
+          <div className="flex flex-col w-full">
+            <div className="flex  items-center space-x-2">
+             <Logo/>
+            <p className="text-sm leading-relaxed">
+              Nur UI is a modern React and Next.js based UI component library.
             </p>
+            </div>
           </div>
-          
-          <div className="space-y-4">
-            <h4 className="font-semibold">Quicks Links</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
-              <li><Link href="/create-companion" className="hover:text-primary transition-colors">Companion</Link></li>
-              <li><Link href="/learning-ai" className="hover:text-primary transition-colors">Learning</Link></li>
 
-              <li><a href="/pricing" className="hover:text-primary transition-colors">Pricing</a></li>
-            </ul>
-          </div>
-          
-          <div className="space-y-4">
-            <h4 className="font-semibold">Company</h4>
-            <ul className="space-y-2 text-muted-foreground">
-                         <li><a href="#" className="hover:text-primary transition-colors">Features</a></li>
+          {/* Footer link sections */}
+          {footerLinks.map((section) => (
+            <div key={section.title}>
+              <h4 className="text-white text-lg font-semibold mb-6">
+                {section.title}
+              </h4>
+              <ul className="space-y-3">
+                {section.links.map((link) => (
+                  <li key={link.label} className="relative">
+                    <a
+                      href={link.href}
+                      className="hover:text-[#3ca2fa] transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                    {link.pulse && (
+                      <span className="absolute top-0 -right-2.5 w-2 h-2 rounded-full bg-[#3ca2fa] animate-pulse"></span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-              <li><Link href="/create-companion" className="hover:text-primary transition-colors">Companion</Link></li>
-              <li><Link href="/journey" className="hover:text-primary transition-colors">Journey</Link></li>
-            </ul>
-          </div>
-          
-          <div className="space-y-4">
-            <h4 className="font-semibold">Support</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li><Link href="#" className="hover:text-primary transition-colors">Help Center</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Contact</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Privacy</Link></li>
+          {/* Contact section */}
+          <div>
+            <h4 className="text-white text-lg font-semibold mb-6">
+              Contact Us
+            </h4>
+            <ul className="space-y-4">
+              {contactInfo.map((item, i) => (
+                <li key={i} className="flex items-center space-x-3">
+                  {item.icon}
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className="hover:text-[#3ca2fa] transition-colors"
+                    >
+                      {item.text}
+                    </a>
+                  ) : (
+                    <span className="hover:text-[#3ca2fa] transition-colors">
+                      {item.text}
+                    </span>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-        
-        <div className="border-t border-border mt-12 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2025 Wisera. All rights reserved.</p>
-            <p className="text-sm">Develop by Unain</p>
-        </div>
+
+        <hr className="border-t border-gray-700 my-8" />
+
+       
       </div>
+
+      {/* Text hover effect */}
+      <div className="lg:flex hidden h-120 -mt-52 -mb-36">
+        <TextHoverEffect text="Book Loom" className="z-50" />
+      </div>
+
+      <FooterBackgroundGradient />
     </footer>
   );
-};
+}
 
 export default Footer;
