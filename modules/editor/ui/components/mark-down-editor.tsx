@@ -153,7 +153,7 @@ export default function MarkDownEditor({ data }: Props) {
           </div>
           <div className="text-right">
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
-              Total Words
+              Total Wordss
             </p>
             <p className="text-2xl font-bold text-primary">
               {totalWords.toLocaleString()}
