@@ -156,17 +156,13 @@ export const getAllBooks = async () => {
 //  update book outline
 
 export const updateBook = async ({
-	bookTitle,
-	coverImageUrl,
-	topic,
-	writingStyle,
 	review_outline,
 	id,
 }: UpdateProps) => {
 	try {
 		const bookUpdate = await db
 			.update(bookOutline)
-			.set({ bookTitle, coverImageUrl, topic, writingStyle, review_outline })
+			.set({  review_outline })
 			.where(eq(bookOutline.id, id));
 		return bookUpdate;
 	} catch (error) {

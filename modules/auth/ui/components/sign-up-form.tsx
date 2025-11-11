@@ -247,7 +247,7 @@ export const SignUpForm = () => {
 							type="button"
 							disabled={providerLoading}
 							onClick={() => onSocial("google")}
-							className="h-12 w-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg flex items-center justify-center gap-3 font-medium transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
+							className="h-12 w-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg flex items-center justify-center gap-3 font-medium transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
 							<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
 								<path
 									d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -271,8 +271,6 @@ export const SignUpForm = () => {
 							</span>
 						</Button>
 					</div>
-
-					
 				</form>
 			</Form>
 		</div>

@@ -12,13 +12,13 @@ const Home = () => {
 	return (
 		<>
 			<HomeView />
-			<div className="my-10">
+			
 				<BookFeatured />
-			</div>
+			
 			<div className="w-full   px-4 sm:px-6 lg:px-8 flex justify-center">
 				<div className="w-full ">
 					<Suspense fallback={<BookSkeleton width={196} />}>
-						<BookFetch />
+						<BookFetch title="Featured" subTitle="Books" description="Hand-crafted selections from your personal library" count={0} endCount={4}  />
 					</Suspense>
 				</div>
 			</div>

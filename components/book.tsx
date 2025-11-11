@@ -22,7 +22,7 @@ interface BookProps {
 export const Book = ({
 	coverImageUrl,
 	variant = "stripe",
-	width = 196,
+	width = 246,
 	color,
 }: BookProps) => {
 	const _width = useResponsive(width);
