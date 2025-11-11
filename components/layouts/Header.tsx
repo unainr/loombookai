@@ -52,13 +52,13 @@ export default function MainHeader() {
 						Create Book
 					</Link>
 					<Link
-						href="/learning-ai"
+						href="/all-books"
 						className={cn(
 							"text-sm font-medium transition-colors ",
-							isActive("/learning-ai") &&
+							isActive("/all-books") &&
 								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
 						)}>
-						Learning
+					All Books
 					</Link>
 					<Link
 						href="/journey"

@@ -188,7 +188,8 @@ export const SignInForm = () => {
 					type="button"
 					disabled={providerLoading}
 					onClick={() => onSocial("google")}
-					className="h-12 w-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg flex items-center justify-center gap-3 font-medium transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+					className="h-12 w-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg flex items-center justify-center gap-3 font-medium transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+
 				>
 					<svg
 						width="20"
@@ -213,7 +214,7 @@ export const SignInForm = () => {
 							fill="#EA4335"
 						/>
 					</svg>
-					<span>
+					<span >
 						{providerLoading ? (
 							<LoaderCircle className="w-5 h-5 animate-spin" />
 						) : (

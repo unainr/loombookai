@@ -6,12 +6,12 @@ export default function HeroSection() {
 <div className="relative w-full min-h-screen flex items-center">
   {/* Background Image */}
   <div
-    className="absolute inset-0 bg-contain "
-    style={{ backgroundImage: "url('/slider.webp')" }}
+    className="absolute inset-0 bg-cover bg-no-repeat "
+    style={{ backgroundImage: "url('/slider-15.jpg')" }}
   ></div>
 
   {/* Overlay */}
-  <div className="absolute inset-0 bg-black/50"></div>
+  <div className="absolute inset-0 bg-black/20"></div>
 
   {/* Content */}
   <div className="relative z-10 w-full">

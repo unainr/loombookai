@@ -16,9 +16,5 @@ export type BookData = {
 
 export interface UpdateProps{
   id:string
-  bookTitle?: string;
-	topic?: string;
-	writingStyle?: string;
 	review_outline?: object;
-  coverImageUrl?:string
 }
