@@ -24,121 +24,115 @@ export default function MainHeader() {
 	}, []);
 
 	return (
-		<header
-			className={`fixed top-0 z-50 w-full transition-all duration-200 ${
-				isScrolled ? "bg-background/60 backdrop-blur-md" : ""
-			}`}>
-			<div className="mx-auto  flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-				<Logo />
+	<header
+  className={`fixed top-0 z-50 w-full transition-all duration-200 ${
+    isScrolled 
+      ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-md" 
+      : "bg-transparent"
+  }`}>
+  <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+    <Logo />
 
-				<nav className="hidden  md:flex items-center gap-4 lg:gap-6">
-					<Link
-						href="/"
-						className={cn(
-							"text-sm font-medium transition-colors ",
-							isActive("/") &&
-								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
-						)}>
-						Home
-					</Link>
+    <nav className="hidden md:flex items-center gap-4 lg:gap-6">
+      <Link
+        href="/"
+        className={cn(
+          "text-sm font-medium transition-colors",
+          isActive("/")
+            ? "text-[#4A90E2] hover:text-[#4A90E2] font-semibold underline underline-offset-4"
+            : isScrolled 
+              ? "text-gray-700dark:text-white hover:text-[#4A90E2]"
+              : "text-white hover:text-white/80"
+        )}>
+        Home
+      </Link>
 
-					<Link
-						href="/create-book"
-						className={cn(
-							"text-sm font-medium transition-colors ",
-							isActive("/create-book") &&
-								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
-						)}>
-						Create Book
-					</Link>
-					<Link
-						href="/all-books"
-						className={cn(
-							"text-sm font-medium transition-colors ",
-							isActive("/all-books") &&
-								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
-						)}>
-					All Books
-					</Link>
-					<Link
-						href="/journey"
-						className={cn(
-							"text-sm font-medium transition-colors ",
-							isActive("/journey") &&
-								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
-						)}>
-						My Journey
-					</Link>
-					<Link
-						href="/pricing"
-						className={cn(
-							"text-sm font-medium transition-colors ",
-							isActive("/pricing") &&
-								"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
-						)}>
-						Pricing
-					</Link>
-				</nav>
+      <Link
+        href="/all-books"
+        className={cn(
+          "text-sm font-medium transition-colors",
+          isActive("/all-books")
+            ? "text-[#4A90E2] hover:text-[#4A90E2] font-semibold underline underline-offset-4"
+            : isScrolled 
+              ? "text-gray-700dark:text-white hover:text-[#4A90E2]"
+              : "text-white hover:text-white/80"
+        )}>
+        All Books
+      </Link>
 
-				<div className="hidden md:flex items-center gap-2">
-					<AnimatedThemeToggler />
-					<UserDropDown />
-				</div>
+      <Link
+        href="/create-book"
+        className={cn(
+          "text-sm font-medium transition-colors",
+          isActive("/create-book")
+            ? "text-[#4A90E2] hover:text-[#4A90E2] font-semibold underline underline-offset-4"
+            : isScrolled 
+              ? "text-gray-700dark:text-white hover:text-[#4A90E2]"
+              : "text-white hover:text-white/80"
+        )}>
+        Create Book
+      </Link>
+    </nav>
 
-				{/* Mobile Menu Trigger */}
-				<div className="md:hidden flex items-center">
-					<Sheet>
-						<SheetTrigger asChild>
-							<Button variant="ghost" size="icon">
-								<Menu className="h-6 w-6" />
-							</Button>
-						</SheetTrigger>
-						<SheetContent side="right" className="w-[250px] sm:w-[300px]">
-							<nav className="flex flex-col gap-4 mt-8 items-center">
-								<Link
-									href="/"
-									className={cn(
-										"text-sm font-medium transition-colors ",
-										isActive("/") &&
-											"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
-									)}>
-									Home
-								</Link>
-								<Link
-									href="/learning-ai"
-									className={cn(
-										"text-sm font-medium transition-colors ",
-										isActive("/learning-ai") &&
-											"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
-									)}>
-									Learning
-								</Link>
-								<Link
-									href="/journey"
-									className={cn(
-										"text-sm font-medium transition-colors ",
-										isActive("/journey") &&
-											"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
-									)}>
-									My Journey
-								</Link>
-								<Link
-									href="/pricing"
-									className={cn(
-										"text-sm font-medium transition-colors ",
-										isActive("/pricing") &&
-											"text-[#ffbc5f] hover:text-[#ffbc5f] transition-all duration-100 ease-in font-semibold underline underline-offset-4"
-									)}>
-									Pricing
-								</Link>
-								<AnimatedThemeToggler />
+    <div className="hidden md:flex items-center gap-2">
+      <AnimatedThemeToggler />
+      <UserDropDown />
+    </div>
 
-								<UserDropDown />
-							</nav>
-						</SheetContent>
-					</Sheet>
-				</div>
-			</div>
-		</header>
+    {/* Mobile Menu Trigger */}
+    <div className="md:hidden flex items-center gap-2">
+      <AnimatedThemeToggler />
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon">
+            <Menu className={cn(
+              "h-6 w-6 transition-colors",
+              isScrolled 
+                ? "text-gray-700dark:text-white" 
+                : "text-white"
+            )} />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="right" className="w-[250px] sm:w-[300px] bg-white dark:bg-slate-900">
+          <nav className="flex flex-col gap-4 mt-8 items-center">
+            <Link
+              href="/"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-[#4A90E2]",
+                isActive("/")
+                  ? "text-[#4A90E2] font-semibold underline underline-offset-4"
+                  : "text-gray-700dark:text-white"
+              )}>
+              Home
+            </Link>
+            <Link
+              href="/all-books"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-[#4A90E2]",
+                isActive("/all-books")
+                  ? "text-[#4A90E2] font-semibold underline underline-offset-4"
+                  : "text-gray-700dark:text-white"
+              )}>
+              All Books
+            </Link>
+            <Link
+              href="/create-book"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-[#4A90E2]",
+                isActive("/create-book")
+                  ? "text-[#4A90E2] font-semibold underline underline-offset-4"
+                  : "text-gray-700dark:text-white"
+              )}>
+              Create Book
+            </Link>
+            <div className="mt-4">
+              <UserDropDown />
+            </div>
+          </nav>
+        </SheetContent>
+      </Sheet>
+    </div>
+  </div>
+</header>
 	);
 }

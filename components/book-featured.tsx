@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 export default function BookFeatured() {
@@ -91,9 +92,11 @@ export default function BookFeatured() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-8 sm:mt-12 lg:mt-16">
+          <Link href={'/all-books'}>
           <button className="text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-300 underline underline-offset-4 hover:underline-offset-8">
             View All Collections →
           </button>
+          </Link>
         </div>
       </div>
     </section>
