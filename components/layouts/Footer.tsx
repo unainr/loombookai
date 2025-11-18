@@ -11,21 +11,21 @@ import {
 } from "lucide-react";
 import { FooterBackgroundGradient, TextHoverEffect } from "./hover-footer";
 import Logo from "./Logo";
+import Link from "next/link";
 
 function Footer() {
   // Footer link data
   const footerLinks = [
     {
-      title: "About Us",
+      title: "Helpful Links",
       links: [
-        { label: "Company History", href: "#" },
-        { label: "Meet the Team", href: "#" },
-        { label: "Employee Handbook", href: "#" },
-        { label: "Careers", href: "#" },
+        { label: "Home", href: "/" },
+        { label: "Create Book", href: "/create-book" },
+        { label: "All Book", href: "/all-books" },
       ],
     },
     {
-      title: "Helpful Links",
+      title: "About Us",
       links: [
         { label: "FAQs", href: "#" },
         { label: "Support", href: "#" },
@@ -42,8 +42,8 @@ function Footer() {
   const contactInfo = [
     {
       icon: <Mail size={18} className="text-[#3ca2fa]" />,
-      text: "hello@nurui.com",
-      href: "mailto:hello@nurui.com",
+      text: "hello@bookloom.com",
+      href: "mailto:hello@bookloom.com",
     },
     {
       icon: <Phone size={18} className="text-[#3ca2fa]" />,
@@ -66,37 +66,35 @@ function Footer() {
   ];
 
   return (
-    <footer className="bg-[#0F0F11]/10 relative h-fit rounded-3xl overflow-hidden m-8">
+   <><footer className="bg-[#0F0F11]/10 dark:bg-[#0F0F11]/30 relative h-fit rounded-3xl overflow-hidden m-8">
       <div className="max-w-7xl mx-auto p-14 z-40 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 lg:gap-16 pb-12">
           {/* Brand section */}
           <div className="flex flex-col w-full">
-            <div className="flex  items-center space-x-2">
-             <Logo/>
-            <p className="text-sm leading-relaxed">
-              Nur UI is a modern React and Next.js based UI component library.
-            </p>
+            <div className="flex items-center space-x-2 mb-4">
+              <Logo />
             </div>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+             AI-powered e-book generation platform. BookLoom transforms your ideas into professionally crafted digital books with intelligent automation.
+            </p>
           </div>
 
           {/* Footer link sections */}
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h4 className="text-white text-lg font-semibold mb-6">
+              <h4 className="text-foreground text-lg font-semibold mb-6">
                 {section.title}
               </h4>
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.label} className="relative">
-                    <a
+                    <Link
                       href={link.href}
-                      className="hover:text-[#3ca2fa] transition-colors"
+                      className="text-muted-foreground hover:text-[#d3803c] dark:hover:text-[#e09043] transition-colors"
                     >
                       {link.label}
-                    </a>
-                    {link.pulse && (
-                      <span className="absolute top-0 -right-2.5 w-2 h-2 rounded-full bg-[#3ca2fa] animate-pulse"></span>
-                    )}
+                    </Link>
+
                   </li>
                 ))}
               </ul>
@@ -105,7 +103,7 @@ function Footer() {
 
           {/* Contact section */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-6">
+            <h4 className="text-foreground text-lg font-semibold mb-6">
               Contact Us
             </h4>
             <ul className="space-y-4">
@@ -115,12 +113,12 @@ function Footer() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="hover:text-[#3ca2fa] transition-colors"
+                      className="text-muted-foreground hover:text-[#d3803c] dark:hover:text-[#e09043] transition-colors text-sm"
                     >
                       {item.text}
                     </a>
                   ) : (
-                    <span className="hover:text-[#3ca2fa] transition-colors">
+                    <span className="text-muted-foreground hover:text-[#d3803c] dark:hover:text-[#e09043] transition-colors text-sm">
                       {item.text}
                     </span>
                   )}
@@ -130,18 +128,36 @@ function Footer() {
           </div>
         </div>
 
-        <hr className="border-t border-gray-700 my-8" />
+        <hr className="border-t border-border my-8" />
 
-       
+        {/* Bottom Section with Social Links */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-sm text-muted-foreground">
+            © 2025 BookLoom. All rights reserved.
+          </p>
+          <div className="flex items-center space-x-3">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                aria-label={social.label}
+                className="w-10 h-10 rounded-full bg-[#d3803c]/10 dark:bg-[#e09043]/10 hover:bg-[#d3803c] dark:hover:bg-[#e09043] text-[#d3803c] dark:text-[#e09043] hover:text-white flex items-center justify-center transition-all duration-300"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Text hover effect */}
-      <div className="lg:flex hidden h-120 -mt-52 -mb-36">
-        <TextHoverEffect text="Book Loom" className="z-50" />
+      <div className="lg:flex hidden h-120 -mt-52 -mb-36 ">
+        <TextHoverEffect text="BookLoom" className="z-50" />
       </div>
 
       <FooterBackgroundGradient />
     </footer>
+  </>
   );
 }
 

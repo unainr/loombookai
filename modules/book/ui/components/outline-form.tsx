@@ -64,147 +64,179 @@ const OutlineForm = () => {
 	}
 
 	return (
-		<div className="w-full flex justify-center py-14 px-4">
-  <div className="w-full max-w-xl">
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 border border-border/40 bg-card/50 backdrop-blur-md rounded-2xl p-8 shadow-lg animate-fadeIn"
-      >
-        <h2 className="text-2xl font-bold text-center mb-4">
-          📚 Create Your E-Book
-        </h2>
-
-        {/* Book Title */}
-        <FormField
-          control={form.control}
-          name="bookTitle"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-sm font-medium">Book Title</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Enter your book title"
-                  {...field}
-                  className="bg-muted/20 focus:bg-background transition-colors"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Topic */}
-        <FormField
-          control={form.control}
-          name="topic"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-sm font-medium">Topic</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="What is your book about?"
-                  {...field}
-                  className="bg-muted/20 focus:bg-background transition-colors"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Number of Chapters */}
-        <FormField
-          control={form.control}
-          name="chaptersCount"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-sm font-medium">Chapters Count</FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder="e.g. 10"
-                  {...field}
-                  value={field.value ?? ""}
-                  onChange={(e) => field.onChange(Number(e.target.value))}
-                  className="bg-muted/20 focus:bg-background transition-colors"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Writing Style */}
-        <FormField
-          control={form.control}
-          name="writingStyle"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-sm font-medium">Writing Style</FormLabel>
-              <FormControl>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="bg-muted/20 focus:bg-background transition-colors">
-                    <SelectValue placeholder="Choose writing style" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {writingStyles.map((opt) => (
-                      <SelectItem key={opt.value} value={opt.value}>
-                        {opt.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Images Upload */}
-        <FormField
-          control={form.control}
-          name="coverImageUrl"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-sm font-medium">Upload Cover Image</FormLabel>
-              <FormControl>
-                <FileUpload {...field} onChange={(files) => field.onChange(files)} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Buttons */}
-        <div className="flex gap-4 pt-4">
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={() => setOpen(false)}
-            className="flex-1 border border-border/40"
-          >
-            Cancel
-          </Button>
-
-          <Button
-            disabled={loading}
-            type="submit"
-            className="flex-1 gap-2 font-semibold shadow-md hover:shadow-xl transition-all"
-          >
-            {loading ? (
-              <>
-                <Spinner className="h-4 w-4" /> Generating...
-              </>
-            ) : (
-              <>
-                <SparkleIcon className="h-4 w-4" /> Generate E-Book
-              </>
-            )}
-          </Button>
+	<div className="w-full flex justify-center py-14 px-4">
+  <div className="w-full max-w-7xl">
+    <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      
+      {/* Left Side - Book Images Gallery */}
+      <div className="hidden lg:block space-y-6">
+        <div className="grid grid-cols-2 gap-4">
+          <img 
+            src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&h=600&fit=crop" 
+            alt="Book 1" 
+            className="aspect-3/4 rounded-xl shadow-xl object-cover hover:scale-105 transition-transform duration-300"
+          />
+          <img 
+            src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=600&fit=crop" 
+            alt="Book 2" 
+            className="aspect-3/4 rounded-xl shadow-xl object-cover hover:scale-105 transition-transform duration-300"
+          />
+          <img 
+            src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop" 
+            alt="Book 3" 
+            className="aspect-3/4 rounded-xl shadow-xl object-cover hover:scale-105 transition-transform duration-300"
+          />
+          <img 
+            src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=600&fit=crop" 
+            alt="Book 4" 
+            className="aspect-3/4 rounded-xl shadow-xl object-cover hover:scale-105 transition-transform duration-300"
+          />
         </div>
-      </form>
-    </Form>
+      </div>
+
+      {/* Right Side - Form */}
+      <div className="w-full max-w-xl">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-8 border border-border/40 bg-card/50 backdrop-blur-md rounded-2xl p-8 shadow-lg animate-fadeIn"
+          >
+            <h2 className="text-2xl font-bold text-center mb-4">
+              📚 Create Your E-Book
+            </h2>
+
+            {/* Book Title */}
+            <FormField
+              control={form.control}
+              name="bookTitle"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium">Book Title</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your book title"
+                      {...field}
+                      className="bg-muted/20 focus:bg-background transition-colors"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Topic */}
+            <FormField
+              control={form.control}
+              name="topic"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium">Topic</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="What is your book about?"
+                      {...field}
+                      className="bg-muted/20 focus:bg-background transition-colors"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Number of Chapters */}
+            <FormField
+              control={form.control}
+              name="chaptersCount"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium">Chapters Count</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      placeholder="e.g. 10"
+                      {...field}
+                      value={field.value ?? ""}
+                      onChange={(e) => field.onChange(Number(e.target.value))}
+                      className="bg-muted/20 focus:bg-background transition-colors"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Writing Style */}
+            <FormField
+              control={form.control}
+              name="writingStyle"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium">Writing Style</FormLabel>
+                  <FormControl>
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <SelectTrigger className="bg-muted/20 focus:bg-background transition-colors">
+                        <SelectValue placeholder="Choose writing style" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {writingStyles.map((opt) => (
+                          <SelectItem key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Images Upload */}
+            <FormField
+              control={form.control}
+              name="coverImageUrl"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium">Upload Cover Image</FormLabel>
+                  <FormControl>
+                    <FileUpload {...field} onChange={(files) => field.onChange(files)} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Buttons */}
+            <div className="flex gap-4 pt-4">
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={() => setOpen(false)}
+                className="flex-1 border border-border/40"
+              >
+                Cancel
+              </Button>
+
+              <Button
+                disabled={loading}
+                type="submit"
+                className="flex-1 gap-2 font-semibold shadow-md hover:shadow-xl transition-all"
+              >
+                {loading ? (
+                  <>
+                    <Spinner className="h-4 w-4" /> Generating...
+                  </>
+                ) : (
+                  <>
+                    <SparkleIcon className="h-4 w-4" /> Generate E-Book
+                  </>
+                )}
+              </Button>
+            </div>
+          </form>
+        </Form>
+      </div>
+    </div>
   </div>
 </div>
 

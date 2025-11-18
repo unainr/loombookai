@@ -1,5 +1,7 @@
 import { Brain, Palette, Zap, BookOpen, FileText, Download } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const features = [
   {
@@ -126,13 +128,13 @@ const FeaturesSection = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-12 sm:mt-16 lg:mt-20">
-          <button className="group inline-flex items-center gap-3 bg-linear-to-r from-amber-500 to-orange-500 dark:from-amber-600 dark:to-orange-600 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base shadow-lg shadow-amber-500/30 dark:shadow-amber-500/20 hover:shadow-xl hover:shadow-amber-500/40 dark:hover:shadow-amber-500/30 transition-all duration-300 hover:scale-105 active:scale-95">
+        <div  className="text-center mt-12 sm:mt-16 lg:mt-20">
+          <Link href={'/create-book'}>
+          <Button size={'lg'} className="group inline-flex items-center gap-3  bg-linear-to-r from-amber-500 to-orange-500 dark:from-amber-600 dark:to-orange-600 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base shadow-lg shadow-amber-500/30 dark:shadow-amber-500/20 hover:shadow-xl hover:shadow-amber-500/40 dark:hover:shadow-amber-500/30 transition-all duration-300 hover:scale-105 active:scale-95">
             Start Creating Today
-            <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </button>
+           
+          </Button>
+          </Link>
           <p className="text-sm text-gray-500 dark:text-gray-500 mt-4">
             No credit card required • Free forever plan available
           </p>
