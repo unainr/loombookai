@@ -3,7 +3,6 @@ import { auth } from '@/lib/auth';
 import OutlineForm from '@/modules/book/ui/components/outline-form'
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { Suspense } from 'react';
 
 
 const CreateBook = async () => {
@@ -18,10 +17,7 @@ const CreateBook = async () => {
         <Banner title="Create Book" linkText="create-book" />
     
     <div className='flex flex-col items-center justify-center min-h-screen'>
-      <Suspense fallback={<p>Loading...</p>}>
-
       <OutlineForm/>
-      </Suspense>
     </div>
     </>
   )
