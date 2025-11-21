@@ -208,19 +208,12 @@ const OutlineForm = () => {
 
             {/* Buttons */}
             <div className="flex gap-4 pt-4">
-              <Button
-                type="button"
-                variant="ghost"
-                onClick={() => setOpen(false)}
-                className="flex-1 border border-border/40"
-              >
-                Cancel
-              </Button>
+              
 
               <Button
                 disabled={loading}
                 type="submit"
-                className="flex-1 gap-2 font-semibold shadow-md hover:shadow-xl transition-all"
+                className="flex-1 gap-2 bg-linear-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold shadow-md hover:shadow-xl transition-all"
               >
                 {loading ? (
                   <>

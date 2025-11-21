@@ -2,11 +2,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AuthSkeleton() {
   return (
-    <div className="min-h-screen  dark:from-[#4c5fd5] dark:to-[#5a3a7a] flex items-center justify-center p-4 sm:p-5 py-8">
+    <div className="min-h-screen  dark:from-[#ff8900] dark:to-[##ff8900] flex items-center justify-center p-4 sm:p-5 py-8">
       <div className="relative w-full max-w-[900px] bg-white dark:bg-gray-900 rounded-[20px] shadow-[0_25px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_25px_50px_rgba(0,0,0,0.5)] overflow-hidden min-h-[680px] sm:min-h-[620px] lg:h-[550px]">
         
         {/* Animated Background Circle */}
-        <div className="hidden lg:block absolute h-[2000px] w-[2000px] bg-linear-to-bl from-[#667eea] to-[#764ba2] dark:from-[#4c5fd5] dark:to-[#5a3a7a] rounded-full -top-[10%] right-[48%] -translate-y-1/2 animate-pulse" />
+        <div className="hidden lg:block absolute h-[2000px] w-[2000px] bg-linear-to-bl from-[#ff8900] to-[#ff8900] dark:from-[#ff8900] dark:to-[#ff8900] rounded-full -top-[10%] right-[48%] -translate-y-1/2 animate-pulse" />
 
         {/* Desktop Layout */}
         <div className="hidden lg:block">

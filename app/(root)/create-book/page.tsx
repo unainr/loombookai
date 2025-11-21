@@ -1,3 +1,5 @@
+import Banner from "@/components/banner";
+import EBookFormSkeleton from "@/components/EBookFormSkeleton";
 import { CreateBookView } from "@/modules/book/ui/components/views/create-book-view";
 import { Metadata } from "next";
 import { Suspense } from "react";
@@ -5,7 +7,9 @@ import { Suspense } from "react";
 const CreateBook = () => {
 	return (
 		<>
-			<Suspense fallback={<p>Loading...</p>}>
+			<Banner title="Create Book" linkText="create-book" />
+
+			<Suspense fallback={<EBookFormSkeleton/>}>
 				<CreateBookView />
 			</Suspense>
 		</>
