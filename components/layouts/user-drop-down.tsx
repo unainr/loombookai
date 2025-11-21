@@ -3,7 +3,7 @@ import React from "react";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { LogOut } from "lucide-react";
+import { LogIn, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const UserDropDown = () => {
@@ -43,11 +43,12 @@ const UserDropDown = () => {
         </div>
       ) : (
         <Link 
-          href="/sign-in"
-          className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-orange-500 transition-colors"
-        >
-          Sign In
-        </Link>
+  href="/sign-in"
+  className="inline-flex items-center gap-2 bg-linear-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200 px-4 py-2 text-sm rounded-md"
+>
+  <LogIn className="w-4 h-4" />
+  Sign In
+</Link>
       )}
     </>
   );

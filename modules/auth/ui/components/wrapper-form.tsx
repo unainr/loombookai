@@ -8,12 +8,12 @@ export default function WrapperForm() {
 	const [isSignUp, setIsSignUp] = useState(false);
 
 	return (
-		<div className="min-h-screen   dark:to-[#5a3a7a] flex items-center justify-center p-4 sm:p-5 ">
+		<div className="min-h-screen   dark:to-[#ff8900] flex items-center justify-center p-4 sm:p-5 ">
 			<div
 				className={`relative w-full max-w-[900px] bg-white dark:bg-gray-900 rounded-[20px] shadow-[0_25px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_25px_50px_rgba(0,0,0,0.5)] overflow-hidden
         min-h-[680px] sm:min-h-[620px] lg:h-[550px]
         before:content-[''] before:absolute before:h-[2000px] before:w-[2000px] before:rounded-full before:transition-all before:duration-1800 before:ease-in-out
-        before:bg-linear-to-bl before:from-[#667eea] before:to-[#764ba2] dark:before:from-[#4c5fd5] dark:before:to-[#5a3a7a]
+        before:bg-linear-to-bl before:from-[#ff8900] before:to-[#ff8900] dark:before:from-[#ff8900] dark:before:to-[#ff8900]
         before:-top-[10%] before:-translate-y-1/2
         ${
 					isSignUp
@@ -87,7 +87,7 @@ export default function WrapperForm() {
 							</div>
 							<button
 								onClick={() => setIsSignUp(true)}
-								className="mt-3 bg-transparent border-2  border-white w-[130px] sm:w-[140px] h-10 sm:h-[43px] font-semibold text-[0.8rem] sm:text-[0.85rem] text-white rounded-full cursor-pointer transition-all duration-300 hover:bg-white hover:text-[#667eea] active:scale-95">
+								className="mt-3 bg-transparent border-2  border-white w-[130px] sm:w-[140px] h-10 sm:h-[43px] font-semibold text-[0.8rem] sm:text-[0.85rem] text-white rounded-full cursor-pointer transition-all duration-300 hover:bg-white hover:text-[#ff8900] active:scale-95">
 								Sign up
 							</button>
 						</div>

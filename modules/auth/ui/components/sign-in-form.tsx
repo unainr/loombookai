@@ -164,7 +164,7 @@ export const SignInForm = () => {
 				{/* Submit Button */}
 				<Button
 					disabled={loading}
-					className="w-full h-12 bg-linear-to-r from-blue-600 via-blue-500 to-blue-400 hover:from-blue-700 hover:via-blue-600 hover:to-blue-500 dark:from-blue-500 dark:via-blue-600 dark:to-blue-700 dark:hover:from-blue-600 dark:hover:via-blue-700 dark:hover:to-blue-800 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-blue-500/20 dark:shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/30 dark:hover:shadow-blue-500/40 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+					className="inline-flex w-full items-center gap-2 bg-linear-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200 px-4 py-2 text-sm rounded-md"
 					type="submit"
 				>
 					{loading ? (
@@ -188,7 +188,7 @@ export const SignInForm = () => {
 					type="button"
 					disabled={providerLoading}
 					onClick={() => onSocial("google")}
-					className="h-12 w-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg flex items-center justify-center gap-3 font-medium transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+					className="h-12 w-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-orange-500 dark:hover:orange-blue-400 hover:text-orange-600 dark:hover:text-orange-400 rounded-lg flex items-center justify-center gap-3 font-medium transition-all duration-200 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
 
 				>
 					<svg

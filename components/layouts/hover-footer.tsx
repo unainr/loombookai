@@ -132,12 +132,23 @@ export const TextHoverEffect = ({
 
 export const FooterBackgroundGradient = () => {
   return (
-    <div
-      className="absolute inset-0 z-0"
-      style={{
-        background:
-          "radial-gradient(125% 125% at 50% 10%, #0F0F1166 50%, #3ca2fa33 100%)",
-      }}
-    />
+  <div className="absolute inset-0 z-0">
+  {/* Light mode background */}
+  <div
+    className="absolute inset-0 dark:hidden"
+    style={{
+      background:
+        "radial-gradient(125% 125% at 50% 10%, #e0e7ff66 50%, #93c5fd55 100%)",
+    }}
+  />
+  {/* Dark mode background */}
+  <div
+    className="hidden dark:block absolute inset-0"
+    style={{
+      background:
+        "radial-gradient(125% 125% at 50% 10%, #0F0F1166 50%, #3ca2fa33 100%)",
+    }}
+  />
+</div>
   );
 };
