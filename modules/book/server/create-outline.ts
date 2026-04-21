@@ -92,6 +92,7 @@ Return only the JSON with complete chapter content.
 			model: groq("openai/gpt-oss-120b"),
 			prompt,
 		});
+		const parsedOutline = JSON.parse(text);
 		let imageUrl: string | null = null;
 		if (coverImageUrl) {
 			imageUrl = await ImageUpload(coverImageUrl);
@@ -104,7 +105,7 @@ Return only the JSON with complete chapter content.
 				topic,
 				chaptersCount,
 				writingStyle,
-				review_outline: text,
+				review_outline: parsedOutline,
 				coverImageUrl: imageUrl,
 			})
 			.returning();
